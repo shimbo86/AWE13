@@ -75,11 +75,7 @@ while errors < 6  do
    printf "Guess the word : " + word_encrypted + "\nEnter a character: "
    character = gets.upcase.chomp
    character_found = false
-   i = 0
-   while i < word.length do
-      word[i]== character ? (word_encrypted[i] = character and character_found = true):nil
-      i+=1
-   end
+   (0...word.length).each{|i| word[i]== character ? (word_encrypted[i] = character and character_found = true):nil}
    word_encrypted.count("*")==0 ? (puts("!!!! WORD FOUND : " + word + " !!!!") or break):(character_found ? puts("!! CHARACTER FOUND !!") : errors+=1)
    paint(errors)
 end
